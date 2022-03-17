@@ -30,4 +30,4 @@ jobs:
         USERNAME: ${{ secrets.USER }}
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
-        script: sudo bash /tmp/bollyde/install.sh
+        script: sudo bash /tmp/bollyde/install.sh && sudo cat "${{ secrets.DISCORD }}" > /var/discord/bollyde/.discord
