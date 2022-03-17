@@ -1,0 +1,13 @@
+[Unit]
+Description=bollyde discord bot deamon
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/discord/bollyde/
+
+ExecStart=python3 main.py
+
+[Install]
+WantedBy=multi-user.target
