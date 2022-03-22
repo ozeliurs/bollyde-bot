@@ -28,11 +28,12 @@ async def on_message(message):
         playe = {}
 
         for play in data:
-            if play[1].split("#") not in players:
-                players[play[1].split("#")] = 0
-                playe[play[1].split("#")] = play[1]
+            jid = play[1].split("#")[1]
+            if jid not in players:
+                players[jid] = 0
+                playe[jid] = play[1]
             if int(players[play[2]]) - 5 > 0:
-                players[play[1].split("#")] += int(players[play[2]]) - 5
+                players[jid] += int(players[play[2]]) - 5
 
         out = "Résultats :\n"
 
