@@ -5,7 +5,6 @@ with open(f"{__file__.split('/main.py')[0]}/.discord", "r", encoding="utf8") as 
 
 client = discord.Client()
 
-
 def buildIdTable(csv):
     dic = {}
     for line in csv:
@@ -27,13 +26,15 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
-    sutom = "74,325623032456413186,test,3\n74,325623032456413186,test,3"
+
     if message.content == "$sutom":
         with open("/data/sutom.csv", "r", encoding="utf8") as sutom:
-            data = [x.split(",") for x in sutom.read().split("\n") if x != ""][:-1]
+            print(sutom.read())
+            data = [x.split(",") for x in sutom.read().split("\n") if x.strip() != ""][:-1]
+
+        print(data)
 
         table = buildIdTable(data)
-
         players = {}
 
         for play in data:
