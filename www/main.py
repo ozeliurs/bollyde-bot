@@ -25,19 +25,19 @@ async def on_message(message):
             data = [x.split(",") for x in sutom.read().split("\n")]
 
         players = {}
-        play = {}
+        playe = {}
 
         for play in data:
             if play[1].split("#") not in players:
                 players[play[1].split("#")] = 0
-                play[play[1].split("#")] = play[1]
+                playe[play[1].split("#")] = play[1]
             if int(players[play[2]]) - 5 > 0:
                 players[play[1].split("#")] += int(players[play[2]]) - 5
 
         out = "Résultats :\n"
 
         for player in players:
-            out += f"{play[player]} - {players[player]} points\n"
+            out += f"{playe[player]} - {players[player]} points\n"
 
         message.channel.send(out)
 
