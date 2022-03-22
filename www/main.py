@@ -32,6 +32,7 @@ async def on_message(message):
             print(sutom.read())
             sutom = sutom.read().split("\n")
             data = []
+            print(sutom)
             for su in sutom:
                 print(su)
                 if su != "":
