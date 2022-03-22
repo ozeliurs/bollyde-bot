@@ -20,6 +20,13 @@ async def on_message(message):
     if message.author == client.user:
         return
 
+    if message.content.startswith("SUTOM #"):
+        meta = message.content.split("\n")[0]
+        _, day, score = meta.split(" ")
+
+        with open("/data/sutom.csv", "a", encoding="utf8") as sutom:
+            sutom.write(f"\n{day.strip('#')}, {message.author}, {score.split('/')}")
+
 
 def main():
     client.run(TOKEN)
