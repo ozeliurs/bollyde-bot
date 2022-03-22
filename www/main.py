@@ -32,8 +32,8 @@ async def on_message(message):
             if jid not in players:
                 players[jid] = 0
                 playe[jid] = play[1]
-            if int(players[play[2]]) - 5 > 0:
-                players[jid] += int(players[play[2]]) - 5
+            if int(play[2]) - 5 > 0:
+                players[jid] += int(play[2]) - 5
 
         out = "Résultats :\n"
 
