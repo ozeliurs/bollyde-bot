@@ -25,7 +25,7 @@ async def on_message(message):
         _, day, score = meta.split(" ")
 
         with open("/data/sutom.csv", "a", encoding="utf8") as sutom:
-            sutom.write(f"\n{day.strip('#')}, {message.author}, {score.split('/')}")
+            sutom.write(f"\n{day.strip('#')}, {message.author}, {score.split('/')[1]}")
 
 
 def main():
