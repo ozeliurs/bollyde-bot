@@ -22,7 +22,7 @@ async def on_message(message):
 
     if message.content == "$sutom":
         with open("/data/sutom.csv", "r", encoding="utf8") as sutom:
-            data = [x.split(",") for x in sutom.read().split("\n")]
+            data = [x.split(",") for x in sutom.read().split("\n")][:-1]
 
         players = {}
         playe = {}
