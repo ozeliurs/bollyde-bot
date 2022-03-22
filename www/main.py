@@ -30,7 +30,7 @@ async def on_message(message):
     if message.content == "$sutom":
         with open("/data/sutom.csv", "r", encoding="utf8") as sutom:
             print(sutom.read())
-            data = [x.split(",") for x in sutom.read().split("\n") if x.strip() != ""][:-1]
+            data = [x.split(",") for x in sutom.read().split("\n") if x.strip() != ""]
 
         print(data)
 
