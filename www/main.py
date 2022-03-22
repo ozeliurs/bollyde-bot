@@ -32,6 +32,8 @@ async def on_message(message):
             if 7 - int(play[2]) > 0:
                 players[play[1]] += 7 - int(play[2])
 
+        await message.channel.send(str(players))
+
         out = "Résultats :\n"
 
         for player in players:
