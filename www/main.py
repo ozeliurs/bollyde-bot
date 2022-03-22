@@ -22,7 +22,7 @@ async def on_message(message):
 
     if message.content == "$sutom":
         with open("/data/sutom.csv", "r", encoding="utf8") as sutom:
-            data = [x.split(",") for x in sutom.read().split("\n")][:-1]
+            data = [x.split(",") for x in sutom.read().split("\n") if x != ""][:-1]
 
         players = {}
         playe = {}
@@ -47,7 +47,7 @@ async def on_message(message):
         _, day, score = meta.split(" ")
 
         with open("/data/sutom.csv", "a", encoding="utf8") as sutom:
-            sutom.write(f"\n{day.strip('#')},{message.author},{score.split('/')[1]}")
+            sutom.write(f"\n{day.strip('#')},{message.author.id},{score.split('/')[0]}")
 
 
 def main():
