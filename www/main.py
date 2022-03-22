@@ -28,17 +28,15 @@ async def on_message(message):
         playe = {}
 
         for play in data:
-            jid = play[1].split("#")[1]
-            if jid not in players:
-                players[jid] = 0
-                playe[jid] = play[1]
+            if play[1] not in players:
+                players[play[1]] = 0
             if 7 - int(play[2]) > 0:
-                players[jid] += 7 - int(play[2])
+                players[play[1]] += 7 - int(play[2])
 
         out = "Résultats :\n"
 
         for player in players:
-            out += f"{playe[player]} - {players[player]} points\n"
+            out += f"{player} - {players[player]} points\n"
 
         await message.channel.send(out)
 
