@@ -40,7 +40,7 @@ async def on_message(message):
         for player in players:
             out += f"{playe[player]} - {players[player]} points\n"
 
-        message.channel.send(out)
+        await message.channel.send(out)
 
     if message.content.startswith("SUTOM #"):
         meta = message.content.split("\n")[0]
