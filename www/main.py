@@ -40,6 +40,7 @@ async def on_message(message):
         message = await channel.fetch_message(int(link[6]))
 
         reactions = ["regional_indicator_i", "regional_indicator_n", "regional_indicator_c", "regional_indicator_o", "regional_indicator_m", "o2", "regional_indicator_d", "o"]
+        reactions = ["hot_face"]
         for emoji in reactions:
             await message.add_reaction(emoji)
 
