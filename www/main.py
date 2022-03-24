@@ -31,6 +31,18 @@ async def on_message(message):
         await message.channel.send("https://media.discordapp.net/attachments/856154341106647090/953608358127091732/unknown.png")
         await message.delete()
 
+    if message.content.startswith("!incomodo"):
+        link = message.content.split("!incomodo ")[1].split("/")
+        await message.delete()
+        server = client.get_guild(int(link[4]))
+        channel = server.get_channel(int(link[6]))
+        message = await channel.fetch_message(int(link[5]))
+
+        reactions = [":regional_indicator_i:", ":regional_indicator_n:", ":regional_indicator_c:", ":regional_indicator_o:", ":regional_indicator_m:", ":o2:", ":regional_indicator_d:", ":o:"]
+        for emoji in reactions:
+            await message.add_reaction(emoji)
+
+
     if message.content == "$sutom":
         with open("/data/sutom.csv", "r", encoding="utf8") as sutom:
             sutom = sutom.read().split("\n")
