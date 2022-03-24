@@ -46,43 +46,6 @@ async def on_message(message):
         await message.reply("https://www.youtube.com/watch?v=RA5AtqUZbZE")
 
 
-    if message.content == "$sutom":
-        with open("/data/sutom.csv", "r", encoding="utf8") as sutom:
-            sutom = sutom.read().split("\n")
-            data = []
-            print(sutom)
-            for su in sutom:
-                print(su)
-                if su != "":
-                    data.append(su.split(","))
-
-        print(data)
-
-        table = buildIdTable(data)
-        players = {}
-
-        for play in data:
-            if play[1] not in players:
-                players[play[1]] = 0
-            if 7 - int(play[3]) > 0:
-                players[play[1]] += 7 - int(play[3])
-
-        out = "Résultats :\n"
-
-        for player in players:
-            out += f"{table[player]} - {players[player]} points\n"
-
-        await message.channel.send(out)
-
-
-    if message.content.startswith("SUTOM #"):
-        meta = message.content.split("\n")[0]
-        _, day, score = meta.split(" ")
-
-        with open("/data/sutom.csv", "a", encoding="utf8") as sutom:
-            sutom.write(f"\n{day.strip('#')},{message.author.id},{message.author},{score.split('/')[0]}")
-
-
 def main():
     client.run(TOKEN)
 
