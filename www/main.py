@@ -27,9 +27,12 @@ async def on_message(message):
     if message.author == client.user:
         return
 
+    if message.content.startswith("!evite"):
+        await message.channel.send("https://media.discordapp.net/attachments/856154341106647090/953608358127091732/unknown.png")
+        await message.delete()
+
     if message.content == "$sutom":
         with open("/data/sutom.csv", "r", encoding="utf8") as sutom:
-            print(sutom.read())
             sutom = sutom.read().split("\n")
             data = []
             print(sutom)
