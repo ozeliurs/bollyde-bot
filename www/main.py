@@ -43,7 +43,12 @@ async def on_message(message):
         channel = server.get_channel(int(link[5]))
         message = await channel.fetch_message(int(link[6]))
 
-        await message.reply("https://www.youtube.com/watch?v=RA5AtqUZbZE")
+        reactions = ["<:regional_indicator_i:>", "<:regional_indicator_n:>", "<:regional_indicator_c:>", "<:regional_indicator_o:>", "<:regional_indicator_m:>", "<:o2:>", "<:regional_indicator_d:>", "<:o:>"]
+
+        for emoji in reactions:
+            await message.add_reaction(emoji)
+
+        await message.reply("<:hot_face:>")
 
 
 def main():
