@@ -39,9 +39,7 @@ async def on_message(message):
         channel = server.get_channel(int(link[5]))
         message = await channel.fetch_message(int(link[6]))
 
-        reactions = ["🇮", "🇳", "🇨", "🅾"️, "🇲", "🇴", "🇩", "⭕"]
-        for emoji in reactions:
-            await message.add_reaction(emoji)
+        await message.reply("https://www.youtube.com/watch?v=RA5AtqUZbZE")
 
 
     if message.content == "$sutom":
