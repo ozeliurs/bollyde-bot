@@ -33,7 +33,11 @@ async def on_message(message):
         await message.delete()
 
     if message.content.startswith("!incomodo"):
-        link = message.content.split("!incomodo ")[1].split("/")
+        link = message.content.split("!incomodo ")[1]
+        if link.strip() = "":
+            await message.reply("https://youtu.be/0AJfiIHg4fU")
+            return
+        link = link.split("/")
         await message.delete()
         server = client.get_guild(int(link[4]))
         channel = server.get_channel(int(link[5]))
