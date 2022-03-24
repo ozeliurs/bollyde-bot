@@ -5,6 +5,7 @@ with open(f"{__file__.split('/main.py')[0]}/.discord", "r", encoding="utf8") as 
 
 client = discord.Client()
 
+
 def buildIdTable(csv):
     dic = {}
     for line in csv:
