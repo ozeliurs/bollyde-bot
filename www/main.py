@@ -37,7 +37,7 @@ async def on_message(message):
         await message.delete()
 
         if message.content.startswith("!noodle"):
-            await message.channel.send("https://i.ytimg.com/vi/Es0C1X7c6HM/hqdefault.jpg")
+            await message.channel.send("https://www.youtube.com/watch?v=iOQz2r6ZtR4")
             await message.delete()
 
     if message.content.startswith("!incomodo"):
