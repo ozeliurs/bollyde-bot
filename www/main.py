@@ -46,11 +46,7 @@ async def on_message(message):
         await message.delete()
 
     if message.content.startswith("!ghostping"):
-        to = message.content.split("!ghostping")[1]
-        nmess = await message.channel.send(to)
         await message.delete()
-        time.sleep(0.5)
-        nmess.delete()
 
     if message.content.startswith("!incomodo"):
         link = message.content.split("!incomodo ")[1]
