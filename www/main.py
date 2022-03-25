@@ -40,6 +40,10 @@ async def on_message(message):
         await message.channel.send("https://www.youtube.com/watch?v=iOQz2r6ZtR4")
         await message.delete()
 
+    if message.content.startswith("!espuma"):
+        await message.channel.send("<@!692684431370223647> https://youtu.be/k3xxquu-pmQ")
+        await message.delete()
+
     if message.content.startswith("!incomodo"):
         link = message.content.split("!incomodo ")[1]
         if link.strip() == "":
