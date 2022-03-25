@@ -1,4 +1,5 @@
 import discord
+import time
 
 with open(f"{__file__.split('/main.py')[0]}/.discord", "r", encoding="utf8") as secret:
     TOKEN = secret.read()
@@ -43,6 +44,13 @@ async def on_message(message):
     if message.content.startswith("!espuma"):
         await message.channel.send("<@!692684431370223647> https://youtu.be/k3xxquu-pmQ")
         await message.delete()
+
+    if message.content.startswith("!ghostping"):
+        to = message.content.split("!ghostping")[1]
+        nmess = await message.channel.send(to)
+        await message.delete()
+        time.sleep(0.5)
+        nmess.delete()
 
     if message.content.startswith("!incomodo"):
         link = message.content.split("!incomodo ")[1]
