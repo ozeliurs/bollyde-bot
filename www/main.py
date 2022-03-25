@@ -32,6 +32,10 @@ async def on_message(message):
         await message.channel.send("https://media.discordapp.net/attachments/856154341106647090/953608358127091732/unknown.png")
         await message.delete()
 
+    if message.content.startswith("!nekfeu"):
+        await message.channel.send("https://cdn.discordapp.com/attachments/953590491637768202/956903404259672084/ErmxaTxXYAEqmXo.png")
+        await message.delete()
+
     if message.content.startswith("!incomodo"):
         link = message.content.split("!incomodo ")[1]
         if link.strip() == "":
