@@ -53,7 +53,7 @@ async def on_message(message):
 
     if message.content.startswith("!ghosted"):
         with open("/data/ghostping", "r", encoding="utf8") as log:
-            contents = log.read().split("\n")
+            contents = log.read().split("\n")[:-1]
         count = Counter(contents)
 
         out = "Ghostping Users:\n"
