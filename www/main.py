@@ -1,5 +1,6 @@
 import discord
 import time
+from collections import Counter
 
 with open(f"{__file__.split('/main.py')[0]}/.discord", "r", encoding="utf8") as secret:
     TOKEN = secret.read()
@@ -46,25 +47,30 @@ async def on_message(message):
         await message.delete()
 
     if message.content.startswith("!ghostping"):
+        with open("/data/ghostping", "a", encoding="utf8") as log:
+            log.write(f"{message.author}\n")
+        await message.delete()
+
+    if message.content.startswith("!ghosted"):
+        with open("/data/ghostping", "r", encoding="utf8") as log:
+            contents = log.read().split("\n")
+        count = Counter(contents)
+
+        out = "Ghostping Users:\n"
+
+        for ind in count:
+            out += ind + ": " + count[ind] + "\n"
+
+        await message.delete()
+        await message.channel.send(out)
+
+    if message.content.startswith("!cringe"):
+        await message.channel.send("https://giphy.com/gifs/the-office-smile-9oF7EAvaFUOEU")
         await message.delete()
 
     if message.content.startswith("!incomodo"):
-        link = message.content.split("!incomodo ")[1]
-        if link.strip() == "":
-            await message.reply("https://youtu.be/0AJfiIHg4fU")
-            return
-        link = link.split("/")
+        await message.channel.send("https://cdn.discordapp.com/attachments/755446976631406725/957972945819541554/Pardon_je_sais_qui_Leto..._-_Morbius.mp4")
         await message.delete()
-        server = client.get_guild(int(link[4]))
-        channel = server.get_channel(int(link[5]))
-        message = await channel.fetch_message(int(link[6]))
-
-        reactions = ["<:regional_indicator_i:>", "<:regional_indicator_n:>", "<:regional_indicator_c:>", "<:regional_indicator_o:>", "<:regional_indicator_m:>", "<:o2:>", "<:regional_indicator_d:>", "<:o:>"]
-
-        for emoji in reactions:
-            await message.add_reaction(emoji)
-
-        await message.reply("<:hot_face:>")
 
 
 def main():
