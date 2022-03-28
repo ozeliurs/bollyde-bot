@@ -59,7 +59,7 @@ async def on_message(message):
         out = "Ghostping Users:\n"
 
         for ind in count:
-            out += ind + ": " + count[ind] + "\n"
+            out += str(ind) + ": " + str(count[ind]) + "\n"
 
         await message.delete()
         await message.channel.send(out)
