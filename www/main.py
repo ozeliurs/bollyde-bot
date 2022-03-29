@@ -37,17 +37,12 @@ async def on_message(message):
         "noodle": "https://www.youtube.com/watch?v=iOQz2r6ZtR4",
         "espuma": "<@!692684431370223647> https://youtu.be/k3xxquu-pmQ",
         "bonsens": "https://cdn.discordapp.com/attachments/755446976631406725/958326468956520508/videoplayback.mp4",
-        "prob": "https://cdn.discordapp.com/attachments/755446976631406725/958326585847586836/st.cowJup56qXJR.mp4",
+        "proba": "https://cdn.discordapp.com/attachments/755446976631406725/958326585847586836/st.cowJup56qXJR.mp4",
         "cringe": "https://giphy.com/gifs/the-office-smile-9oF7EAvaFUOEU",
         "incomodo": "https://cdn.discordapp.com/attachments/755446976631406725/957972945819541554/Pardon_je_sais_qui_Leto..._-_Morbius.mp4"
     }
 
     comm = message.content.strip(prefix).strip()
-
-    if message.content.startswith("!"):
-        await message.channel.send(comm+ str(comm in messages))
-
-    #await message.channel.send(comm)
 
     if comm in messages:
         await message.channel.send(messages[comm])
