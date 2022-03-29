@@ -44,7 +44,8 @@ async def on_message(message):
 
     comm = message.content.strip(prefix).strip()
 
-    print(comm, comm in messages)
+    if message.content.startswith("!"):
+        await message.channel.send(comm+ str(comm in messages))
 
     #await message.channel.send(comm)
 
