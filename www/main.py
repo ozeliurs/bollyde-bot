@@ -1,5 +1,4 @@
 import discord
-import time
 from collections import Counter
 
 with open(f"{__file__.split('/main.py')[0]}/.discord", "r", encoding="utf8") as secret:
@@ -43,8 +42,12 @@ async def on_message(message):
         "incomodo": "https://cdn.discordapp.com/attachments/755446976631406725/957972945819541554/Pardon_je_sais_qui_Leto..._-_Morbius.mp4"
     }
 
-    if message.content.strip(prefix).strip() in messages:
-        await message.channel.send(messages[message.content.strip(prefix).strip()])
+    comm = message.content.strip(prefix).strip()
+
+    await message.channel.send(comm)
+
+    if comm in messages:
+        await message.channel.send(messages[comm])
         await message.delete()
 
     if message.content.startswith("!ghostping"):
