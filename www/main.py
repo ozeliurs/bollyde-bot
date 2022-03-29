@@ -46,6 +46,14 @@ async def on_message(message):
         await message.channel.send("<@!692684431370223647> https://youtu.be/k3xxquu-pmQ")
         await message.delete()
 
+    if message.content.startswith("!bonsens"):
+        await message.channel.send("https://cdn.discordapp.com/attachments/755446976631406725/958326468956520508/videoplayback.mp4")
+        await message.delete()
+
+    if message.content.startswith("!prob"):
+        await message.channel.send("https://cdn.discordapp.com/attachments/755446976631406725/958326585847586836/st.cowJup56qXJR.mp4")
+        await message.delete()
+
     if message.content.startswith("!ghostping"):
         with open("/data/ghostping", "a", encoding="utf8") as log:
             log.write(f"{message.author}\n")
