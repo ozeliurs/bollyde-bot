@@ -44,7 +44,7 @@ async def on_message(message):
 
     comm = message.content.strip(prefix).strip()
 
-    await message.channel.send(comm)
+    #await message.channel.send(comm)
 
     if comm in messages:
         await message.channel.send(messages[comm])
