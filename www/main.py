@@ -30,28 +30,21 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith("!evite"):
-        await message.channel.send("https://media.discordapp.net/attachments/856154341106647090/953608358127091732/unknown.png")
-        await message.delete()
+    prefix = "!"
 
-    if message.content.startswith("!nekfeu"):
-        await message.channel.send("https://cdn.discordapp.com/attachments/953590491637768202/956903404259672084/ErmxaTxXYAEqmXo.png")
-        await message.delete()
+    messages = {
+        "evite": "https://media.discordapp.net/attachments/856154341106647090/953608358127091732/unknown.png",
+        "nekfeu": "https://cdn.discordapp.com/attachments/953590491637768202/956903404259672084/ErmxaTxXYAEqmXo.png",
+        "noodle": "https://www.youtube.com/watch?v=iOQz2r6ZtR4",
+        "espuma": "<@!692684431370223647> https://youtu.be/k3xxquu-pmQ",
+        "bonsens": "https://cdn.discordapp.com/attachments/755446976631406725/958326468956520508/videoplayback.mp4",
+        "prob": "https://cdn.discordapp.com/attachments/755446976631406725/958326585847586836/st.cowJup56qXJR.mp4",
+        "cringe": "https://giphy.com/gifs/the-office-smile-9oF7EAvaFUOEU",
+        "incomodo": "https://cdn.discordapp.com/attachments/755446976631406725/957972945819541554/Pardon_je_sais_qui_Leto..._-_Morbius.mp4"
+    }
 
-    if message.content.startswith("!noodle"):
-        await message.channel.send("https://www.youtube.com/watch?v=iOQz2r6ZtR4")
-        await message.delete()
-
-    if message.content.startswith("!espuma"):
-        await message.channel.send("<@!692684431370223647> https://youtu.be/k3xxquu-pmQ")
-        await message.delete()
-
-    if message.content.startswith("!bonsens"):
-        await message.channel.send("https://cdn.discordapp.com/attachments/755446976631406725/958326468956520508/videoplayback.mp4")
-        await message.delete()
-
-    if message.content.startswith("!prob"):
-        await message.channel.send("https://cdn.discordapp.com/attachments/755446976631406725/958326585847586836/st.cowJup56qXJR.mp4")
+    if message.content.strip(prefix).strip() in messages:
+        await message.channel.send(messages[message.content.strip(prefix).strip()])
         await message.delete()
 
     if message.content.startswith("!ghostping"):
@@ -71,14 +64,6 @@ async def on_message(message):
 
         await message.delete()
         await message.channel.send(out)
-
-    if message.content.startswith("!cringe"):
-        await message.channel.send("https://giphy.com/gifs/the-office-smile-9oF7EAvaFUOEU")
-        await message.delete()
-
-    if message.content.startswith("!incomodo"):
-        await message.channel.send("https://cdn.discordapp.com/attachments/755446976631406725/957972945819541554/Pardon_je_sais_qui_Leto..._-_Morbius.mp4")
-        await message.delete()
 
 
 def main():
