@@ -56,7 +56,7 @@ async def on_message(message):
         await message.delete()
 
     if message.content.startswith("!ghosted"):
-        if str(message.author) in [".Happy.#8314", "Kioko#2772", "kylian#7207"]:
+        if str(message.author) in [".Happy.#8314", "Kioko#2772"]:
             await message.channel.send("Petit curieux va ...")
             return
         
