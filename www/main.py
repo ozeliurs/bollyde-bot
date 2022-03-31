@@ -40,7 +40,8 @@ async def on_message(message):
         "proba": "https://cdn.discordapp.com/attachments/755446976631406725/958326585847586836/st.cowJup56qXJR.mp4",
         "cringe": "https://giphy.com/gifs/the-office-smile-9oF7EAvaFUOEU",
         "incomodo": "https://cdn.discordapp.com/attachments/755446976631406725/957972945819541554/Pardon_je_sais_qui_Leto..._-_Morbius.mp4",
-        "feur": "https://cdn.discordapp.com/attachments/759864445760962601/959070908553785364/unknown.png"
+        "feur": "https://cdn.discordapp.com/attachments/759864445760962601/959070908553785364/unknown.png",
+        "culot": "https://cdn.discordapp.com/attachments/768477390283210812/959111419578708008/unknown.png"
     }
 
     comm = message.content.strip(prefix).strip()
