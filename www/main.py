@@ -48,8 +48,10 @@ async def on_message(message):
 
     comm = message.content.strip().split(" ")[0]
 
-    if comm in [m+prefix for m in messages]:
-        await message.channel.send(messages[comm])
+    print(comm)
+
+    if comm in [prefix+m for m in messages]:
+        await message.channel.send(messages[comm.strip("!")])
         await message.delete()
 
     if message.content.startswith(prefix+"shifoumi"):
