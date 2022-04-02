@@ -41,7 +41,9 @@ async def on_message(message):
         "bonsens": "https://cdn.discordapp.com/attachments/755446976631406725/958326468956520508/videoplayback.mp4",
         "proba": "https://cdn.discordapp.com/attachments/755446976631406725/958326585847586836/st.cowJup56qXJR.mp4",
         "cringe": "https://giphy.com/gifs/the-office-smile-9oF7EAvaFUOEU",
-        "incomodo": "https://cdn.discordapp.com/attachments/755446976631406725/957972945819541554/Pardon_je_sais_qui_Leto..._-_Morbius.mp4"
+        "incomodo": "https://cdn.discordapp.com/attachments/755446976631406725/957972945819541554/Pardon_je_sais_qui_Leto..._-_Morbius.mp4",
+        "feur": "https://cdn.discordapp.com/attachments/759864445760962601/959070908553785364/unknown.png",
+        "culot": "https://cdn.discordapp.com/attachments/768477390283210812/959111419578708008/unknown.png"
     }
 
     comm = message.content.strip().split( )[0]
@@ -78,6 +80,11 @@ async def on_message(message):
         await message.delete()
 
     if message.content.startswith("!ghosted"):
+        if str(message.author) in [".Happy.#8314", "Kioko#2772"]:
+            await message.channel.send("Petit curieux va ...")
+            return
+        
+        
         with open("/data/ghostping", "r", encoding="utf8") as log:
             contents = log.read().split("\n")[:-1]
         count = Counter(contents)
