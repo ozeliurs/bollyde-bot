@@ -46,7 +46,7 @@ async def on_message(message):
         "culot": "https://cdn.discordapp.com/attachments/768477390283210812/959111419578708008/unknown.png"
     }
 
-    comm = message.content.strip().split( )[0]
+    comm = message.content.strip().split(" ")[0]
 
     if comm in [m+prefix for m in messages]:
         await message.channel.send(messages[comm])
