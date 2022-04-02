@@ -1,3 +1,5 @@
+import random
+
 import discord
 from collections import Counter
 
@@ -42,11 +44,33 @@ async def on_message(message):
         "incomodo": "https://cdn.discordapp.com/attachments/755446976631406725/957972945819541554/Pardon_je_sais_qui_Leto..._-_Morbius.mp4"
     }
 
-    comm = message.content.strip(prefix).strip()
+    comm = message.content.strip().split( )[0]
 
-    if comm in messages:
+    if comm in [m+prefix for m in messages]:
         await message.channel.send(messages[comm])
         await message.delete()
+
+    if message.content.startswith(prefix+"shifoumi"):
+        if len( message.content.strip().split(" ") ) != 3:
+            await message.channel.send(prefix+"shifoumi <J1> <J2>")
+            return
+        else:
+            els = ["pierre", "papier", "ciseaux"]
+            p1 = message.content.strip().split(" ")[1]
+            j1 = random.choice(els)
+            p2 = message.content.strip().split(" ")[2]
+            j2 = random.choice(els)
+
+            await message.channel.send(f"{p1}: {j1} - {j2} :{p2}")
+
+            if p1 == p2:
+                winner = "égalité"
+            elif (j1 == "pierre" and j2 == "ciseaux") or (j1 == "ciseaux" and j2 == "feuille") or (j1 == "feuille" and j2 == "pierre"):
+                winner = f"{p1} à gagné"
+            else:
+                winner = f"{p2} à gagné"
+
+            await message.channel.send(f"Résultat: {winner}")
 
     if message.content.startswith("!ghostping"):
         with open("/data/ghostping", "a", encoding="utf8") as log:
