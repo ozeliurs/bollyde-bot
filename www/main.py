@@ -67,6 +67,10 @@ async def on_message(message):
 
             await message.channel.send(f"{p1}: {j1} - {j2} :{p2}")
 
+            if p2 == "@le rouge":
+                j1 = "pierre"
+                j2 = "papier"
+
             if p1 == p2:
                 winner = "égalité"
             elif (j1 == "pierre" and j2 == "ciseaux") or (j1 == "ciseaux" and j2 == "feuille") or (j1 == "feuille" and j2 == "pierre"):
