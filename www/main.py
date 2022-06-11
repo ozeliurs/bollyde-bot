@@ -97,7 +97,7 @@ async def on_message(message):
         await message.channel.send(out)
 
     if message.content.startswith(f"{prefix}help"):
-        help = [f" - {prefix}{x} -> image" + "\n" for x, y in messages.items()]
+        help = "".join([f" - {prefix}{x} -> {y}" + "\n" for x, y in messages.items()])
 
         help += f" - {prefix}shifoumi <a> <b> -> détermine le vainqueur entre a et b. (maintenant sans bug !!)\n"
         help += f" - {prefix}ghostping <a> -> supprimme immédiatement le message d'origine. (attention vous êtes enregistrés !)\n"
