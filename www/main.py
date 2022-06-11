@@ -48,13 +48,11 @@ async def on_message(message):
 
     comm = message.content.strip().split(" ")[0]
 
-    print(comm)
-
     if comm in [prefix+m for m in messages]:
         await message.channel.send(messages[comm.strip("!")])
         await message.delete()
 
-    if message.content.startswith(prefix+"shifoumi"):
+    if message.content.startswith(f"{prefix}shifoumi"):
         if len( message.content.strip().split(" ") ) != 3:
             await message.channel.send(prefix+"shifoumi <J1> <J2>")
             return
@@ -67,7 +65,7 @@ async def on_message(message):
 
             await message.channel.send(f"{p1}: {j1} - {j2} :{p2}")
 
-            if p1 == p2:
+            if j1 == j2:
                 winner = "égalité"
             elif (j1 == "pierre" and j2 == "ciseaux") or (j1 == "ciseaux" and j2 == "feuille") or (j1 == "feuille" and j2 == "pierre"):
                 winner = f"{p1} à gagné"
@@ -76,17 +74,16 @@ async def on_message(message):
 
             await message.channel.send(f"Résultat: {winner}")
 
-    if message.content.startswith("!ghostping"):
+    if message.content.startswith(f"{prefix}ghostping"):
         with open("/data/ghostping", "a", encoding="utf8") as log:
             log.write(f"{message.author}\n")
         await message.delete()
 
-    if message.content.startswith("!ghosted"):
+    if message.content.startswith(f"{prefix}ghosted"):
         if str(message.author) in [".Happy.#8314", "Kioko#2772"]:
             await message.channel.send("Petit curieux va ...")
             return
-        
-        
+
         with open("/data/ghostping", "r", encoding="utf8") as log:
             contents = log.read().split("\n")[:-1]
         count = Counter(contents)
@@ -99,6 +96,14 @@ async def on_message(message):
         await message.delete()
         await message.channel.send(out)
 
+    if message.content.startswith(f"{prefix}help"):
+        help = [f" - {prefix}{x} -> {y}" + "\n" for x, y in messages.items()]
+
+        help += f" - {prefix}shifoumi <a> <b> -> détermine le vainqueur entre a et b. (maintenant sans bug !!)\n"
+        help += f" - {prefix}ghostping <a> -> supprimme immédiatement le message d'origine. (attention vous êtes enregistrés !)\n"
+        help += f" - {prefix}ghosted -> Liste les utilisateurs de ghostping.\n"
+
+        await message.channel.send(help)
 
 def main():
     client.run(TOKEN)
