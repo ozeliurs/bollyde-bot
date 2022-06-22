@@ -118,6 +118,7 @@ async def on_message(message):
         config["player"][message.author][vote] = score
 
         Path("/data/music.json").write_text(json.dumps(config, indent=4))
+        await message.channel.send(f"{score} attribués à {vote}.")
 
     if message.content.startswith(f"{prefix}music end"):
         results = {}
