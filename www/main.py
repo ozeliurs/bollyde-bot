@@ -1,7 +1,10 @@
+import json
 import random
 
 import discord
 from collections import Counter
+
+from pathlib import Path
 
 with open(f"{__file__.split('/main.py')[0]}/.discord", "r", encoding="utf8") as secret:
     TOKEN = secret.read()
@@ -102,8 +105,78 @@ async def on_message(message):
         help += f" - {prefix}shifoumi <a> <b> -> détermine le vainqueur entre a et b. (maintenant sans bug !!)\n"
         help += f" - {prefix}ghostping <a> -> supprimme immédiatement le message d'origine. (attention vous êtes enregistrés !)\n"
         help += f" - {prefix}ghosted -> Liste les utilisateurs de ghostping.\n"
+        help += f" - {prefix}music theme <theme> -> Choisir le theme pour le perdant du cycle précédent.\n"
+        help += f" - {prefix}music vote <score> <vote> -> Voter pour une musique.\n"
+        help += f" - {prefix}music end -> Arreter la session, afficher les résultats et choisir le perdant pour le prochain theme.\n"
 
         await message.channel.send(help)
+
+    if message.content.startswith(f"{prefix}music vote"):
+        config = json.loads(Path("/data/music.json").read_text())
+
+        score, vote = message.content.split(f"{prefix}music vote")[1].split(" ")[0:2]
+        config["player"][message.author][vote] = score
+
+        Path("/data/music.json").write_text(json.dumps(config, indent=4))
+
+    if message.content.startswith(f"{prefix}music end"):
+        results = {}
+        cfile = Path("/data/music.json")
+
+        if not cfile.exists():
+            config = {"theme": None}
+        else:
+            config = json.loads(cfile.read_text())
+
+        for player in config["players"]:
+            for target, score in player.items():
+                if target in results:
+                    results[target] += int(score)
+                else:
+                    results[target] = int(score)
+
+        mini = 1000000000
+        loser = None
+
+        msg = f"Voisi les scores pour le thème: {config['theme']}\n"
+
+        for player, score in results.items():
+            msg += f" - {player}: {score}\n"
+
+            if score < mini:
+                mini = score
+                loser = player
+
+        msg += f"\nA {loser} de choisir le thème. ({prefix}help pour l'aide)"
+
+        config = {"loser": loser}
+
+        await message.channel.send(str(msg))
+
+        cfile.write_text(json.dumps(config, indent=4))
+
+    if message.content.startswith(f"{prefix}music debug"):
+        await message.channel.send(Path("/data/music.json").read_text())
+
+    if message.content.startswith(f"{prefix}music theme"):
+        config = json.loads(Path("/data/music.json").read_text())
+
+        if config["loser"] != message.author:
+            await message.channel.send("Vous n'etes pas le perdant du round précédent.")
+
+        if config["theme"] is None:
+            msg = "Le nouveau theme est la @everyone: "
+        else:
+            msg = "Le thème à changé @everyone: "
+
+        theme = message.content.split(f"{prefix}music theme")[1]
+        config["theme"] = theme
+        msg += theme
+
+        Path("/data/music.json").write_text(json.dumps(config, indent=4))
+
+        await message.channel.send(msg)
+
 
 def main():
     client.run(TOKEN)
