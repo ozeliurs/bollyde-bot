@@ -124,7 +124,7 @@ async def on_message(message):
         cfile = Path("/data/music.json")
 
         if not cfile.exists():
-            config = {"theme": None}
+            config = {"theme": None, "players":{}}
         else:
             config = json.loads(cfile.read_text())
 
