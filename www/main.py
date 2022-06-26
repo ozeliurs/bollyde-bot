@@ -56,8 +56,8 @@ async def on_message(message):
         await message.channel.send(messages[comm.strip("!")])
         await message.delete()
 
-    if str(message.author) == "antøskins#8106" or str(message.author) == "Maxime BILLY#9875":
-        if random.randint(0, 100) <= 100:
+    if str(message.author) == "antøskins#8106":
+        if random.randint(0, 100) <= 10:
             msgs = [
                 "https://youtu.be/zHUylGEOhNg",
                 "https://youtu.be/U0Rizfz_4uM",
