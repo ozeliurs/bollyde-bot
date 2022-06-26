@@ -57,7 +57,7 @@ async def on_message(message):
         await message.delete()
 
     if message.author == "antøskins#8106" or message.author == "Maxime BILLY#9875":
-        if random.random()*100 < 100:
+        if random.randint(0, 100) <= 100:
             msgs = [
                 "https://youtu.be/zHUylGEOhNg",
                 "https://youtu.be/U0Rizfz_4uM",
