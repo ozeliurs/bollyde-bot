@@ -56,6 +56,15 @@ async def on_message(message):
         await message.channel.send(messages[comm.strip("!")])
         await message.delete()
 
+    if message.author == "antøskins#8106" or message.author == "Maxime BILLY#9875":
+        if random.random()*100 < 10:
+            msgs = [
+                "https://youtu.be/zHUylGEOhNg",
+                "https://youtu.be/U0Rizfz_4uM",
+                "https://youtu.be/yuSReKk0-co"
+            ]
+            await message.channel.send(random.choice(msgs))
+
     if message.content.startswith(f"{prefix}shifoumi"):
         if len( message.content.strip().split(" ") ) != 3:
             await message.channel.send(prefix+"shifoumi <J1> <J2>")
