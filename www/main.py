@@ -61,7 +61,8 @@ async def on_message(message):
             msgs = [
                 "https://youtu.be/zHUylGEOhNg",
                 "https://youtu.be/U0Rizfz_4uM",
-                "https://youtu.be/yuSReKk0-co"
+                "https://youtu.be/yuSReKk0-co",
+                "https://youtu.be/VzeOnBRzDik"
             ]
             await message.channel.send(random.choice(msgs))
 
