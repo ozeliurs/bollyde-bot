@@ -65,6 +65,10 @@ async def on_message(message):
                 "https://youtu.be/VzeOnBRzDik"
             ]
             await message.channel.send(random.choice(msgs))
+    
+    if str(message.author) == "Hovercraft#9079":
+        if random.randint(0, 100) <= 5:
+            await message.channel.send("https://www.youtube.com/watch?v=xmwGkwO6lOg&")
 
     if message.content.startswith(f"{prefix}shifoumi"):
         if len( message.content.strip().split(" ") ) != 3:
