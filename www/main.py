@@ -70,6 +70,10 @@ async def on_message(message):
         if random.randint(0, 100) <= 5:
             await message.channel.send("https://www.youtube.com/watch?v=xmwGkwO6lOg&")
 
+    if str(message.author) == "Musaraigne anonyme#1908":
+        if random.randint(0, 100) <= 0:
+            await message.channel.send("La GAUUUUUUUUUUUUUUUUUUUCHE")
+
     if message.content.startswith(f"{prefix}shifoumi"):
         if len( message.content.strip().split(" ") ) != 3:
             await message.channel.send(prefix+"shifoumi <J1> <J2>")
