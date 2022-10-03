@@ -57,13 +57,22 @@ async def on_message(message):
         await message.delete()
 
     if str(message.author) == "antøskins#8106":
-        if random.randint(0, 100) <= 10:
+        if random.randint(0, 100) <= 5:
             msgs = [
                 "https://youtu.be/zHUylGEOhNg",
                 "https://youtu.be/U0Rizfz_4uM",
-                "https://youtu.be/yuSReKk0-co"
+                "https://youtu.be/yuSReKk0-co",
+                "https://youtu.be/VzeOnBRzDik"
             ]
             await message.channel.send(random.choice(msgs))
+    
+    if str(message.author) == "Hovercraft#9079":
+        if random.randint(0, 100) <= 5:
+            await message.channel.send("https://www.youtube.com/watch?v=xmwGkwO6lOg&")
+
+    if str(message.author) == "Musaraigne anonyme#1908":
+        if random.randint(0, 100) <= 0:
+            await message.channel.send("La GAUUUUUUUUUUUUUUUUUUUCHE")
 
     if message.content.startswith(f"{prefix}shifoumi"):
         if len( message.content.strip().split(" ") ) != 3:
