@@ -98,33 +98,33 @@ async def on_message(message):
             await message.channel.send(f"Résultat: {winner}")
 
     if message.content.startswith(f"{prefix}ghostping"):
-        with open("/data/ghostping", "a", encoding="utf8") as log:
-            log.write(f"{message.author}\n")
+        # with open("/data/ghostping", "a", encoding="utf8") as log:
+        #     log.write(f"{message.author}\n")
         await message.delete()
 
-    if message.content.startswith(f"{prefix}ghosted"):
-        if str(message.author) in [".Happy.#8314", "Kioko#2772"]:
-            await message.channel.send("Petit curieux va ...")
-            return
+    # if message.content.startswith(f"{prefix}ghosted"):
+    #     if str(message.author) in [".Happy.#8314", "Kioko#2772"]:
+    #         await message.channel.send("Petit curieux va ...")
+    #        return
 
-        with open("/data/ghostping", "r", encoding="utf8") as log:
-            contents = log.read().split("\n")[:-1]
-        count = Counter(contents)
+    #     with open("/data/ghostping", "r", encoding="utf8") as log:
+    #         contents = log.read().split("\n")[:-1]
+    #     count = Counter(contents)
 
-        out = "Ghostping Users:\n"
+    #     out = "Ghostping Users:\n"
 
-        for ind in count:
-            out += str(ind) + ": " + str(count[ind]) + "\n"
+    #     for ind in count:
+    #         out += str(ind) + ": " + str(count[ind]) + "\n"
 
-        await message.delete()
-        await message.channel.send(out)
+    #     await message.delete()
+    #     await message.channel.send(out)
 
     if message.content.startswith(f"{prefix}help"):
         help = "".join([f" - {prefix}{x} -> Image meme." + "\n" for x, y in messages.items()])
 
         help += f" - {prefix}shifoumi <a> <b> -> détermine le vainqueur entre a et b. (maintenant sans bug !!)\n"
         help += f" - {prefix}ghostping <a> -> supprimme immédiatement le message d'origine. (attention vous êtes enregistrés !)\n"
-        help += f" - {prefix}ghosted -> Liste les utilisateurs de ghostping.\n"
+        # help += f" - {prefix}ghosted -> Liste les utilisateurs de ghostping.\n"
         help += f" - {prefix}music theme <theme> -> Choisir le theme pour le perdant du cycle précédent.\n"
         help += f" - {prefix}music vote <score> <vote> -> Voter pour une musique.\n"
         help += f" - {prefix}music end -> Arreter la session, afficher les résultats et choisir le perdant pour le prochain theme.\n"
