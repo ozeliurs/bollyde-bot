@@ -47,7 +47,8 @@ async def on_message(message):
         "incomodo": "https://cdn.discordapp.com/attachments/755446976631406725/957972945819541554/Pardon_je_sais_qui_Leto..._-_Morbius.mp4",
         "feur": "https://cdn.discordapp.com/attachments/759864445760962601/959070908553785364/unknown.png",
         "culot": "https://cdn.discordapp.com/attachments/768477390283210812/959111419578708008/unknown.png", 
-        "debout": "https://www.youtube.com/shorts/WRzkMKbMYgk"
+        "debout": "https://www.youtube.com/shorts/WRzkMKbMYgk",
+        "spooktober": "https://i.ytimg.com/vi/jG7yLhdCM64/maxresdefault.jpg"
     }
 
     comm = message.content.strip().split(" ")[0]
