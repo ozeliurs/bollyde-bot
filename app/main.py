@@ -9,7 +9,7 @@ from pathlib import Path
 with open(f"{__file__.split('/main.py')[0]}/.discord", "r", encoding="utf8") as secret:
     TOKEN = secret.read()
 
-client = discord.Client(intents=discord.Intents.default())
+client = discord.Client(intents=discord.Intents.all())
 
 
 def buildIdTable(csv):
